@@ -1,8 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import router from './router'
+// import Vue from 'vue';
+// import VueTabulator from 'vue-tabulator';
 
-createApp(App).use(router).mount('#app')
+// Vue.use(VueTabulator);
+// App.use(VueTabulator)
 
 
+let app = createApp(App)
+// app.use(VueTabulator)
+app.mount('#app')
