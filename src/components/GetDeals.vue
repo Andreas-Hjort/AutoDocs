@@ -1,17 +1,11 @@
 <script>
 import axios from 'axios';
 import { HollowDotsSpinner } from 'epic-spinners'
-import Tab from '@/components/Tab.vue'
-import Tabs from '@/components/Tabs.vue'
-import Ordre from '@/components/Ordre.vue'
 
 export default {
   name: 'GetDeals',
   components: {
     HollowDotsSpinner,
-    Tab,
-    Tabs,
-    Ordre
   },
   props: {
     msg: {
@@ -40,10 +34,12 @@ export default {
       const contactUrl = `http://localhost:4000/hubspot/contacts/${this.query}`;
       console.log("Fetching contacts...");
       axios
-        .get(contactUrl, {timeout: 5000})
+        .get(contactUrl, {timeout: 50000})
         .then(response => {
           console.log("Fetch complete!");
           this.contactList = response.data;
+          console.log(response.data);
+          console.log(response.status);
         })
         .catch(error => {
           console.log(error)
@@ -110,17 +106,7 @@ export default {
     <h4>{{ apiError }}</h4>
 
 
-    <Tabs>
-      <Tab title="ordre">
-        <Ordre></Ordre>
-      </Tab>
-      <Tab title="stamdata">
-        <p>Test tab stamdata</p>
-      </Tab>
-      <Tab title="tilbud">
-        <p>Test tab tilbud</p>
-      </Tab>
-    </Tabs>
+    
   </div>
 </template>
 
