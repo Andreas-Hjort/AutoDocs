@@ -22,7 +22,6 @@ export default {
       loadingDeals: false,
       apiError: '',
       testCSV: {
-
       }
     }
   },

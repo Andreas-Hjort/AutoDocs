@@ -1,0 +1,21 @@
+{
+
+    "Sonnen Hybrid": {
+        "module": "(3000320) sonnenBatterie Module 2,5 kWh LFP2 ODU 2",
+        "accessory": "sonnenBatterie Hybrid 9.53 Accessory Kit",
+        "cabinet": {
+            "small": "sonnenBatterie small cabinet for 2,5 kWh",
+            "large": "sonnenBatterie Large cabinet for 2,5 kWh"
+        },
+        "cabinet_accessory": {
+            "small": "sonnenBatterie Accessory kit for small battery cabinet",
+            "large": "sonnenBatterie Accessory kit for large battery cabinet"
+        },
+        "rcd": "Sonnen RCD Type B 30 mA"
+    },
+    "Huawei Luna": {
+        "module": "HUAWEI LUNA2000-5-E0 Battery Module 5 kWh",
+        "power": "HUAWEI LUNA2000-5KW-C0 Power Module",
+        "meter": "Huawei DTSU666-H 3phase Smart Meter 100A"
+    }
+}
