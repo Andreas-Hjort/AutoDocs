@@ -1,8 +1,8 @@
 <script>
-import {TabulatorFull as Tabulator} from 'tabulator-tables'; //import Tabulator library
-import {generateTableData} from '@/components/functions/ordre_calc.js'
-import {formatHubspotData} from '@/components/functions/format_inputs.js'
-import INPUTS from '@/components/dictionaries/INPUTS.json'
+import { TabulatorFull as Tabulator } from 'tabulator-tables'; //import Tabulator library
+import { generateTableData } from '@/components/functions/ordre_calc.js'
+import { formatHubspotData } from '@/components/functions/format_hubspot_data.js'
+import INPUTS from '@/components/fixtures/INPUTS.json'
 import BAT_DICT from '@/components/dictionaries/BAT_DICT.json'
 import PART_DICT from '@/components/dictionaries/PART_DICT.json'
 
@@ -10,7 +10,7 @@ import axios from 'axios';
 
 export default {
     name: 'Ordre',
-    data () {
+    data() {
         return {
             tabulator: null, //variable to hold your table
             tableData: [], //data for table to display
@@ -35,41 +35,41 @@ export default {
     },
     watch: {
         //update table if data changes
-        tableData:{
+        tableData: {
             handler: function (newData) {
-            this.tabulator.replaceData(newData);
+                this.tabulator.replaceData(newData);
             },
             deep: true,
         }
     },
-    mounted(){
+    mounted() {
         //instantiate Tabulator when element is mounted
         this.tabulator = new Tabulator(this.$refs.table, {
             data: this.tableData, //link data to table
-            reactiveData:true, //enable data reactivity HVORFOR VIRKER DET HER SLET IKKE?
+            reactiveData: true, //enable data reactivity HVORFOR VIRKER DET HER SLET IKKE?
             columns: [
-            {title:"Kundenr", field:"Kundenr", sorter:"string", width:150},
-            {title:"Varenr", field:"Varenr", sorter:"string"},
-            {title:"Varenavn", field:"Varenavn", sorter:"string"},
-            {title:"Værdi", field:"Værdi", sorter:"string"},
-            {title:"Leveret", field:"Leveret", sorter:"string"},
-            {title:"Faktureret", field:"Faktureret", sorter:"string"},
-            {title:"Enhed", field:"Enhed", sorter:"string"},
-            {title:"Enhedspris", field:"Enhedspris", sorter:"string"},
-            {title:"Rabat i %", field:"Rabat i %", sorter:"string"},
-            {title:"I alt", field:"I alt", sorter:"string"},
-            {title:"Overskrift", field:"Overskrift", sorter:"string"},
-            {title:"Tekst 1", field:"Tekst 1", sorter:"string"},
-            {title:"Tekst 1_1", field:"Tekst 1_1", sorter:"string"},
-            {title:"Tekst 2", field:"Tekst 2", sorter:"string"},
-            {title:"Vores ref", field:"Vores ref", sorter:"string"},
-            {title:"Øvrig ref", field:"Øvrig ref", sorter:"string"},
-            {title:"Ordrenr", field:"Ordrenr", sorter:"string"},
-            {title:"Navn", field:"Navn", sorter:"string"},
-            {title:"Betingelser", field:"Betingelser", sorter:"string"},
-            {title:"Dato", field:"Dato", sorter:"string"},
-            {title:"Levering", field:"Levering", sorter:"string"},
-            {title:"Layout gruppe", field:"Layout gruppe", sorter:"string"},
+                { title: "Kundenr", field: "Kundenr", sorter: "string", width: 150 },
+                { title: "Varenr", field: "Varenr", sorter: "string" },
+                { title: "Varenavn", field: "Varenavn", sorter: "string" },
+                { title: "Værdi", field: "Værdi", sorter: "string" },
+                { title: "Leveret", field: "Leveret", sorter: "string" },
+                { title: "Faktureret", field: "Faktureret", sorter: "string" },
+                { title: "Enhed", field: "Enhed", sorter: "string" },
+                { title: "Enhedspris", field: "Enhedspris", sorter: "string" },
+                { title: "Rabat i %", field: "Rabat i %", sorter: "string" },
+                { title: "I alt", field: "I alt", sorter: "string" },
+                { title: "Overskrift", field: "Overskrift", sorter: "string" },
+                { title: "Tekst 1", field: "Tekst 1", sorter: "string" },
+                { title: "Tekst 1_1", field: "Tekst 1_1", sorter: "string" },
+                { title: "Tekst 2", field: "Tekst 2", sorter: "string" },
+                { title: "Vores ref", field: "Vores ref", sorter: "string" },
+                { title: "Øvrig ref", field: "Øvrig ref", sorter: "string" },
+                { title: "Ordrenr", field: "Ordrenr", sorter: "string" },
+                { title: "Navn", field: "Navn", sorter: "string" },
+                { title: "Betingelser", field: "Betingelser", sorter: "string" },
+                { title: "Dato", field: "Dato", sorter: "string" },
+                { title: "Levering", field: "Levering", sorter: "string" },
+                { title: "Layout gruppe", field: "Layout gruppe", sorter: "string" },
             ], //define table columns
         });
 
@@ -88,22 +88,23 @@ export default {
 
             console.log("Fetching deals...");
             axios
-                .get(dealUrl, {timeout: 5000})
+                .get(dealUrl, { timeout: 5000 })
                 .then(response => {
-                
-                this.deal = response.data;
-                this.formattedDeal = formatHubspotData(this.deal)
+
+                    this.deal = response.data;
+                    this.formattedDeal = formatHubspotData(this.deal)
                 })
                 .catch(error => {
-                console.log(error)
-                this.apiError = "Coudn't get data :( try again later maybe"
+                    console.log(error)
+                    this.apiError = "Coudn't get data :( try again later maybe"
                 })
 
-            
+
         },
         lavData() {
-            console.log("lav data er kaldt");
-            var inputs = INPUTS
+            console.log("lav data er kaldt MED RIGTIG DEAL-DATA");
+            var inputs = this.formattedDeal
+            // var inputs = INPUTS
             let _tableData = generateTableData(inputs, BAT_DICT, PART_DICT)
             this.tableData = _tableData
             console.log(_tableData);
@@ -113,7 +114,7 @@ export default {
             this.tabulator.download("csv", `ordre - ${this.dealInfo.navn}.csv`);
         }
     }
-    
+
 }
 
 
@@ -123,19 +124,18 @@ export default {
 
 
 <template>
-<div>
-    <button @click="lavData">Lav noget data</button>
-    <button @click="tester">test for satan</button>
-    <button @click="downloadCSV">Download csv</button>
+    <div>
+        <button @click="lavData">Lav noget data</button>
+        <button @click="tester">test for satan</button>
+        <button @click="downloadCSV">Download csv</button>
     </div>
-<div ref="table">
-</div>
+    <div ref="table">
+    </div>
 
-<div id="example-table"></div>
+    <div id="example-table"></div>
 </template>
 
 <style lang='scss'>
-
 // @import "~vue-tabulator/dist/scss/bootstrap/tabulator_bootstrap4";
 @import 'tabulator-tables/dist/css/tabulator_midnight.min.css';
 @import "tabulator-tables/dist/css/tabulator.min.css"; //import Tabulator stylesheet
