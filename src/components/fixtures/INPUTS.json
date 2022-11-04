@@ -1,16 +1,41 @@
 {
-    "montageInputs":{
+    "montageInputs": {
         "tag_1": {
             "row": 5,
             "col": 2,
             "retning": "portrait",
             "befaestelse": "Tagkrog"
         },
-        "tag_2": {"row": 0, "col": 0, "retning": "portrait", "befaestelse": "Stokskrue"},
-        "tag_3": {"row": 0, "col": 0, "retning": "landscape", "befaestelse": "Stokskrue"},
-        "tag_4": {"row": 0, "col": 0, "retning": "landscape", "befaestelse": "Tagkrog"},
-        "tag_5": {"row": 0, "col": 0, "retning": "landscape", "befaestelse": "Tagkrog"} ,
-        "tag_6": {"row": 0, "col": 0, "retning": "portrait", "befaestelse": "Tagkrog"}
+        "tag_2": {
+            "row": 0,
+            "col": 0,
+            "retning": "portrait",
+            "befaestelse": "Stokskrue"
+        },
+        "tag_3": {
+            "row": 0,
+            "col": 0,
+            "retning": "landscape",
+            "befaestelse": "Stokskrue"
+        },
+        "tag_4": {
+            "row": 0,
+            "col": 0,
+            "retning": "landscape",
+            "befaestelse": "Tagkrog"
+        },
+        "tag_5": {
+            "row": 0,
+            "col": 0,
+            "retning": "landscape",
+            "befaestelse": "Tagkrog"
+        },
+        "tag_6": {
+            "row": 0,
+            "col": 0,
+            "retning": "portrait",
+            "befaestelse": "Tagkrog"
+        }
     },
     "inverterInputs": {
         "Invertervalg 1": "Sonnen Hybrid 9.53",

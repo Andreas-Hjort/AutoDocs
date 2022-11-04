@@ -1,5 +1,5 @@
 
-import CONSTANTS from '@/components/dictionaries/CONSTANTS.json' 
+import CONSTANTS from '@/components/dictionaries/CONSTANTS.json'
 
 
 function getConstants() {
@@ -26,14 +26,14 @@ function singleRoofParts(cols, rows, retning, befaestelse) {
     var montagebeslag = 0
     if (rows <= 1 || cols <= 1 || rows % 1 != 0 || cols % 1 != 0) {
         return {
-        "montageskinne": montageskinne,
-        "forbindeled": forbindeled,
-        "rammemontageclips_ende": rammemontageclips_ende,
-        "rammemontageclips_midt": rammemontageclips_midt,
-        "rammemontageclips_ende": rammemontageclips_ende,
-        "montageskrue": montageskrue,
-        "adaptervinkel": adaptervinkel,
-        "montagebeslag": montagebeslag
+            "montageskinne": montageskinne,
+            "forbindeled": forbindeled,
+            "rammemontageclips_ende": rammemontageclips_ende,
+            "rammemontageclips_midt": rammemontageclips_midt,
+            "rammemontageclips_ende": rammemontageclips_ende,
+            "montageskrue": montageskrue,
+            "adaptervinkel": adaptervinkel,
+            "montagebeslag": montagebeslag
         }
     }
 
@@ -42,21 +42,21 @@ function singleRoofParts(cols, rows, retning, befaestelse) {
     var panel_w = constants["panel_w"]
     var afstand = constants["afstand"]
 
-    var subtotal_w = retning == "portrait" ? panel_w*cols/1000 : panel_h*cols/1000
+    var subtotal_w = retning == "portrait" ? panel_w * cols / 1000 : panel_h * cols / 1000
     var middle_clamps = 0.02 * (cols - 1)
     var end_clamps = 2 * 0.03
 
     var total_w = subtotal_w + middle_clamps + end_clamps
-    var total_h = retning == "portrait" ? panel_h*rows/1000 : panel_w*rows/1000
+    var total_h = retning == "portrait" ? panel_h * rows / 1000 : panel_w * rows / 1000
 
-    
+
     if (retning == "portrait") {
-        montageskinne += Math.ceil(total_w/3.3)*2*rows
-        forbindeled += (Math.ceil(total_w/3)-1)*2*rows
-        rammemontageclips_midt += 2*(cols-1)*rows
-        rammemontageclips_ende += 2*2*rows
+        montageskinne += Math.ceil(total_w / 3.3) * 2 * rows
+        forbindeled += (Math.ceil(total_w / 3) - 1) * 2 * rows
+        rammemontageclips_midt += 2 * (cols - 1) * rows
+        rammemontageclips_ende += 2 * 2 * rows
 
-        var befaestelsesTal = (Math.ceil(total_w/(afstand/1000))+1)*2*rows
+        var befaestelsesTal = (Math.ceil(total_w / (afstand / 1000)) + 1) * 2 * rows
         if (befaestelse == "Tagkrog") {
             montagebeslag += befaestelsesTal
         } else {
@@ -65,11 +65,11 @@ function singleRoofParts(cols, rows, retning, befaestelse) {
         }
     } else {
         console.log(`total_h er: ${total_h}`);
-        montageskinne += Math.ceil(total_h/3.3)*2*cols
-        forbindeled += (Math.ceil(total_h/3)-1)*2*cols
-        rammemontageclips_midt += 2*(rows-1)*cols
-        rammemontageclips_ende += 2*2*cols
-        var befaestelsesTal = (Math.ceil(total_h/(afstand/1000))+1)*2*cols
+        montageskinne += Math.ceil(total_h / 3.3) * 2 * cols
+        forbindeled += (Math.ceil(total_h / 3) - 1) * 2 * cols
+        rammemontageclips_midt += 2 * (rows - 1) * cols
+        rammemontageclips_ende += 2 * 2 * cols
+        var befaestelsesTal = (Math.ceil(total_h / (afstand / 1000)) + 1) * 2 * cols
         if (befaestelse == "Tagkrog") {
             montagebeslag += befaestelsesTal
         } else {
@@ -99,7 +99,7 @@ function getMontageParts(inputs) {
     var montageskrue_total = 0
     var adaptervinkel_total = 0
     var montagebeslag_total = 0
-    for (let tag in inputs) {   
+    for (let tag in inputs) {
         var singleRoofPartlist = singleRoofParts(inputs[tag].col, inputs[tag].row, inputs[tag].retning, inputs[tag].befaestelse)
         montageskinne_total += singleRoofPartlist["montageskinne"]
         forbindeled_total += singleRoofPartlist["forbindeled"]
@@ -110,12 +110,12 @@ function getMontageParts(inputs) {
         montagebeslag_total += singleRoofPartlist["montagebeslag"]
     }
 
-    
+
     var montagePartlist = {
-        "MC4 stik Han - inkl. crimp" : [6],
-        "MC4 stik Hun - inkl. crimp" : [6],
-        "Montageskinne 48x36mm - 3,30 m - Sort": [montageskinne_total/2],
-        "Montageskinne 48x36mm - 3,30 m - Sølv": [montageskinne_total/2],
+        "MC4 stik Han - inkl. crimp": [6],
+        "MC4 stik Hun - inkl. crimp": [6],
+        "Montageskinne 48x36mm - 3,30 m - Sort": [montageskinne_total / 2],
+        "Montageskinne 48x36mm - 3,30 m - Sølv": [montageskinne_total / 2],
         "Forbindeled 47x37mm": [forbindeled_total],
         "Rammemontageclips - Ende - Sort": [rammemontageclips_ende_total],
         "Rammemontageclips - Midt - Sort": [rammemontageclips_midt_total],
@@ -131,17 +131,17 @@ function getMontageParts(inputs) {
 }
 
 function getInverterParts(inputs, BAT_DICT) {
-     let constants = getConstants();
+    let constants = getConstants();
 
-     let inv1 = {}, inv2 = {}, inv3 = {}
+    let inv1 = {}, inv2 = {}, inv3 = {}
     // TODO: hvis et hubspot felt er tomt, får vi så null eller en tom string?
-    
+
 
     // TODO: Her er hardkodet noget
     let invList = [[inv1, "Invertervalg 1"], [inv2, "Invertervalg 2"], [inv3, "Invertervalg 3"]]
-    for (var i = 0;i<3;i++) {
+    for (var i = 0; i < 3; i++) {
         let invString = invList[i][1]
-        
+
         switch (i) {
             case 0:
                 if (inputs[invString] != null) {
@@ -169,8 +169,8 @@ function getInverterParts(inputs, BAT_DICT) {
     if (inputs["Batteri valg"] != null) { // Eller tom?
         let sonnen = inputs["Batteri valg"].toLowerCase().includes("sonnen")
         let moduleSize = sonnen ? 2.5 : 5
-        let n_modules = parseFloat(inputs["Batteri effekt"].replace(",",".")) / moduleSize
-        
+        let n_modules = parseFloat(inputs["Batteri effekt"].replace(",", ".")) / moduleSize
+
         if (sonnen) {
             anlaegsStr = `Hybridanlæg med Sonnen inverter`
             bat[BAT_DICT[inputs["Batteri valg"]]["module"]] = n_modules
@@ -195,7 +195,7 @@ function getInverterParts(inputs, BAT_DICT) {
 
     // TODO: Hvad med ladestander?
 
-    let panelStr = constants["Sunpower_effektlist"].includes(inputs["Solcellepanel, Wp"])  ? `Sunpower Performance ${inputs["Solcellepanel, Wp"]}wp Solar Panel Full Black` : `LONGi Solar ${inputs["Solcellepanel, Wp"]}wp Solar Panel Full Black`
+    let panelStr = constants["Sunpower_effektlist"].includes(inputs["Solcellepanel, Wp"]) ? `Sunpower Performance ${inputs["Solcellepanel, Wp"]}wp Solar Panel Full Black` : `LONGi Solar ${inputs["Solcellepanel, Wp"]}wp Solar Panel Full Black`
 
 
     let montageArbejde = inputs["Selvmontage"] == "0" || inputs["Selvmontage"] == "2" ? 1 : 0
@@ -210,18 +210,20 @@ function getInverterParts(inputs, BAT_DICT) {
         ...inv3,
         ...bat
     }
-        
-    
+
+
 }
 
 
 function calcTotalParts(inputs, BAT_DICT) {
+    console.log("Tjek lige inputs inde i ordre_cals.js:");
+    console.log(inputs);
 
-     let inverterParts = getInverterParts(inputs["inverterInputs"], BAT_DICT)
+    let inverterParts = getInverterParts(inputs["inverterInputs"], BAT_DICT)
 
-     let montagePartlist = getMontageParts(inputs["montageInputs"])
+    let montagePartlist = getMontageParts(inputs["montageInputs"])
 
-     let totalPartlist = {
+    let totalPartlist = {
         ...inverterParts,
         ...montagePartlist
     }
@@ -229,10 +231,15 @@ function calcTotalParts(inputs, BAT_DICT) {
 }
 
 
-function createTable(totalPartlist, kolonneInfo, priser, PART_DICT) {
-    let pris_total = priser[0]
-    let pris_montage = priser[1]
-    let pris_elarbejde = priser[2]
+function createTable(totalPartlist, kolonneInfo, PART_DICT) {
+    let pris_total = kolonneInfo["samletPris"]
+    let pris_montage = kolonneInfo["montagePris"]
+    let pris_elarbejde = kolonneInfo["installationsPris"]
+
+    console.log("TJEK PRISERNE:");
+    console.log(pris_total);
+    console.log(pris_montage);
+    console.log(pris_elarbejde);
 
     let tableData = []
     for (let part in totalPartlist) {
@@ -247,7 +254,7 @@ function createTable(totalPartlist, kolonneInfo, priser, PART_DICT) {
             "Enhed": kolonneInfo["Enhed"],
             "Enhedspris": pris,
             "Rabat i %": kolonneInfo["Rabat i %"],
-            "I alt": pris*(1-parseFloat(kolonneInfo["Rabat i %"])),
+            "I alt": pris * (1 - parseFloat(kolonneInfo["Rabat i %"])),
             "Overskrift": kolonneInfo["Overskrift"],
             "Tekst 1": kolonneInfo["Tekst 1"],
             "Tekst 1_1": kolonneInfo["Tekst 1_1"],
@@ -270,9 +277,8 @@ function createTable(totalPartlist, kolonneInfo, priser, PART_DICT) {
 
 export function generateTableData(inputs, BAT_DICT, PART_DICT) {
     let totalPartlist = calcTotalParts(inputs, BAT_DICT)
-    let priser = [74957, 12640, 9900]
 
-    let tableData = createTable(totalPartlist, inputs["kolonneInfo"], priser, PART_DICT)
+    let tableData = createTable(totalPartlist, inputs["kolonneInfo"], PART_DICT)
     // console.log(tableData);
     return tableData
 }
