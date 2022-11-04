@@ -1,0 +1,45 @@
+{
+    "montageInputs":{
+        "tag_1": {
+            "row": 5,
+            "col": 2,
+            "retning": "portrait",
+            "befaestelse": "Tagkrog"
+        },
+        "tag_2": {"row": 0, "col": 0, "retning": "portrait", "befaestelse": "Stokskrue"},
+        "tag_3": {"row": 0, "col": 0, "retning": "landscape", "befaestelse": "Stokskrue"},
+        "tag_4": {"row": 0, "col": 0, "retning": "landscape", "befaestelse": "Tagkrog"},
+        "tag_5": {"row": 0, "col": 0, "retning": "landscape", "befaestelse": "Tagkrog"} ,
+        "tag_6": {"row": 0, "col": 0, "retning": "portrait", "befaestelse": "Tagkrog"}
+    },
+    "inverterInputs": {
+        "Invertervalg 1": "Sonnen Hybrid 9.53",
+        "Invertervalg 2": null,
+        "Invertervalg 3": null,
+        "Batteri valg": "Sonnen Hybrid",
+        "Batteri effekt": "10,0",
+        "Ladestander valg": "",
+        "Selvmontage": "0",
+        "Solcellepanel, Wp": "375"
+    },
+    "kolonneInfo": {
+        "Kundenr": "12312312",
+        "Leveret": 0,
+        "Faktureret": 0,
+        "Enhed": "stk",
+        "Rabat i %": 0,
+        "Overskrift": "Hybridanlæg",
+        "Tekst 1": "Solcellemontage",
+        "Tekst 1_1": "20/06/2022",
+        "Tekst 2": "Lån underskrevet",
+        "Deres ref": "",
+        "Vores ref": "Marcus",
+        "Øvrig ref": "MW",
+        "Ordrenr": "8322",
+        "Navn": "Johnni Christensen",
+        "Betingelser": "Santander",
+        "Dato": "09/06/2022",
+        "Levering": "adresse",
+        "Layout gruppe": "B2C - Netto"
+    }
+}
