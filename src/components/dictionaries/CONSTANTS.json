@@ -2,5 +2,8 @@
     "panel_h": 1690,
     "panel_w": 1160,
     "afstand": 1100,
-    "Sunpower_effektlist": ["375", "380"]
+    "Sunpower_effektlist": [
+        "375",
+        "380"
+    ]
 }

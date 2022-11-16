@@ -6,22 +6,22 @@ export function formatHubspotData(deal) {
     console.log(`Tjek lige dealen ud: `);
     console.log(deal);
     if (deal["tagtype___v_lg_type"]["value"] != "Tagsten/ Tegltag / Betontegl" && deal["tagtype___v_lg_type"]["value"] != "Bølge Eternit / Ståltag") throw console.error("Vi har ikke implementeret ordre for andet end 'Tagsten/ Tegltag / Betontegl' og 'Bølge Eternit / Ståltag'"); //TODO: Skal vi implementere flere?
-    befaestelse = deal["tagtype___v_lg_type"]["value"] == "Tagsten/ Tegltag / Betontegl" ? "Tagkrog" :  "Stokskrue";
-    
+    let befaestelse = deal["tagtype___v_lg_type"]["value"] == "Tagsten/ Tegltag / Betontegl" ? "Tagkrog" : "Stokskrue";
+
 
     let all_info = {
-        "montageInputs":{
+        "montageInputs": {
             "tag_1": {
                 "row": 5,
                 "col": 2,
                 "retning": "portrait",
                 "befaestelse": "Tagkrog"
             },
-            "tag_2": {"row": 0, "col": 0, "retning": "portrait", "befaestelse": "Stokskrue"},
-            "tag_3": {"row": 0, "col": 0, "retning": "landscape", "befaestelse": "Stokskrue"},
-            "tag_4": {"row": 0, "col": 0, "retning": "landscape", "befaestelse": "Tagkrog"},
-            "tag_5": {"row": 0, "col": 0, "retning": "landscape", "befaestelse": "Tagkrog"} ,
-            "tag_6": {"row": 0, "col": 0, "retning": "portrait", "befaestelse": "Tagkrog"},
+            "tag_2": { "row": 0, "col": 0, "retning": "portrait", "befaestelse": "Stokskrue" },
+            "tag_3": { "row": 0, "col": 0, "retning": "landscape", "befaestelse": "Stokskrue" },
+            "tag_4": { "row": 0, "col": 0, "retning": "landscape", "befaestelse": "Tagkrog" },
+            "tag_5": { "row": 0, "col": 0, "retning": "landscape", "befaestelse": "Tagkrog" },
+            "tag_6": { "row": 0, "col": 0, "retning": "portrait", "befaestelse": "Tagkrog" },
             "tagtype___v_lg_type": deal["tagtype___v_lg_type"]["value"], //TODO: Vi skal vidst afgøre "Stokskrue"/"Tagkrog" under "befaestelse ud fra den her"
         },
         "inverterInputs": {
@@ -52,7 +52,10 @@ export function formatHubspotData(deal) {
             "Betingelser": "Santander",
             "Dato": "09/06/2022",
             "Levering": "adresse",
-            "Layout gruppe": "B2C - Netto"
+            "Layout gruppe": "B2C - Netto",
+            "montagePris": deal["pris_montage_ex_moms"]["value"],
+            "installationsPris": deal["pris_el_ex_moms"]["value"],
+            "samletPris": deal["pris_anl_g_ex_moms"]["value"]
         }
     }
     console.log(all_info);
@@ -62,5 +65,5 @@ export function formatHubspotData(deal) {
     } else {
         console.log("Den er IKKE undefined");
     }
-    return {}
+    return all_info
 }
