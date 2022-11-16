@@ -7,10 +7,11 @@ const router = createRouter({
     routes: [
         {
             path: '/',
+            name: "Home",
             component: Home
         },
         {
-            path: '/stamdata',
+            path: '/order',
             component: () => import('../views/Stamdata.vue')
 
         }

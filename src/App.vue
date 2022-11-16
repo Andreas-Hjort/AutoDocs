@@ -3,10 +3,13 @@ import GetDeals from './components/GetDeals.vue';
 import Tab from '@/components/Tab.vue'
 import Tabs from '@/components/Tabs.vue'
 import Ordre from '@/components/Ordre.vue'
+import Navigation from '@/components/Navigation.vue'
 </script>
 
 <template>
-  <GetDeals msg="tester lige"></GetDeals>
+  <!--<GetDeals msg="tester lige"></GetDeals>-->
+  <Navigation></Navigation>
+<!--
   <Tabs>
     <Tab title="ordre">
       <Ordre></Ordre>
@@ -18,8 +21,11 @@ import Ordre from '@/components/Ordre.vue'
       <p>Test tab tilbud</p>
     </Tab>
   </Tabs>
+-->
+
 </template>
 
+<!--
 <style>
 @import './assets/base.css';
 
@@ -31,3 +37,4 @@ import Ordre from '@/components/Ordre.vue'
   font-weight: normal;
 }
 </style>
+-->
