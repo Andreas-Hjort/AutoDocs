@@ -8,12 +8,13 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "epic-spinners": "^1.1.0",
+    "epic-spinners": "^2.0.0",
     "jest": "^28.1.1",
     "jspdf": "^2.5.1",
     "tabulator-tables": "^5.2.7",
     "vue": "^3.2.37",
-    "vue-json-to-csv": "^1.1.8"
+    "vue-json-to-csv": "^1.1.8",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
